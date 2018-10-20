@@ -18,7 +18,7 @@
 <script type="text/javascript">
     function processImage() {
         // Replace <Subscription Key> with your valid subscription key.
-        var subscriptionKey = "4bba05559e98408ab6e6c5785c40cfa7";
+        var subscriptionKey = "04602a602bb543738e53391b304c1381";
 
         // NOTE: You must use the same region in your REST call as you used to
         // obtain your subscription keys. For example, if you obtained your
@@ -41,7 +41,7 @@
         };
 
         // Display the image.
-        var sourceImageUrl = "https://nasa.medispark.io/uploads/image_name.png";
+        var sourceImageUrl = document.getElementById("inputImage").value;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
@@ -77,6 +77,13 @@
         });
     };
 </script>
+
+<h1>Detect Faces:</h1>
+Enter the URL to an image that includes a face or faces, then click
+the <strong>Analyze face</strong> button.<br><br>
+
+Image to analyze: <input type="text" name="inputImage" id="inputImage"
+value="https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg" />
 
 <button onclick="processImage()">Analyze face</button><br><br>
 
