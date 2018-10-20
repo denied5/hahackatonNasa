@@ -46,7 +46,7 @@
         };
 
         // Display the image.
-        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + <?php if(empty(&_POST["imgName"])) {echo ""} else{ echo $name} ?>;
+        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + <?php if(empty($_POST["imgName"])) {echo "";} else { echo $name;} ?>;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
