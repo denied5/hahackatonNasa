@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth">
-  	<p>1.09</p>
+  	<p>1.10</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
@@ -46,7 +46,7 @@
         };
 
         // Display the image.
-        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + <? echo $name ?>;
+        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + <?php echo $name ?>;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
