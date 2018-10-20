@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth">
-  	<p>1.07</p>
+  	<p>1.09</p>
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
