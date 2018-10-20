@@ -6,5 +6,5 @@ $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
 $file = $upload_dir."uploads/image_name.png";
 $success = file_put_contents($file, $data);
-var_dump($upload_dir, $img,, $file, $success);
+var_dump($upload_dir, $img, $file, $success);
 
