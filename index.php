@@ -8,7 +8,6 @@
 </head>
 <body>
   <div class="booth">
-    <p>helooo</p>
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
