@@ -1,5 +1,5 @@
 <?php 
-$upload_dir = '';  //implement this function yourself
+$upload_dir = 'uploads';  //implement this function yourself
 $img = $_POST['imgBase64'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
