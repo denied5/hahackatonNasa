@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth">
-  	<p>1.06</p>
+  	<p>1.07</p>
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
@@ -41,7 +41,7 @@
         };
 
         // Display the image.
-        var sourceImageUrl = "https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg";
+        var sourceImageUrl = "https://nasa.medispark.io/uploads/image_name.png";
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
