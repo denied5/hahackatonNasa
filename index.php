@@ -85,8 +85,7 @@ $.ajax({
             "returnFaceId": "true",
             "returnFaceLandmarks": "false",
             "returnFaceAttributes":
-                "age,gender,headPose,smile,facialHair,glasses,emotion," +
-                "hair,makeup,occlusion,accessories,blur,exposure,noise"
+                "emotion"
         };
 
         // Display the image.
