@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth">
-  	<p>1.11</p>
+  	<p>1.12</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
@@ -16,12 +16,56 @@
   </div>
   <script src="photo.js"></script>
 
-<?php 
-	$name = $_POST['imgName'];
-	echo $name;
- ?>
 <script type="text/javascript">
-    function processImage() {
+	var time = "";
+	(function() {
+  var video = document.getElementById('video'),
+   canvas = document.getElementById('canvas'),
+   context = canvas.getContext('2d'),
+   photo = document.getElementById('photo'),
+   vendorUrl = window.URL || window.webkitURL;
+  navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.
+mozGetUserMedia || navigator.msGetUserMedia;
+  navigator.getMedia({
+   video: true,
+   audio: false
+  }, function(stream) {
+   video.src = vendorUrl.createObjectURL(stream);
+   video.play();
+  }, function(error) {
+   alert('Ошибка! Что-то пошло не так, попробуйте позже.');
+
+  });
+  document.getElementById('capture').addEventListener('click', function() {
+   context.drawImage(video, 0, 0, 400, 300);
+   photo.setAttribute('src', canvas.toDataURL('image/png'));
+  var dataURL = canvas.toDataURL();
+  var d = new Date();
+ 
+  time = d.getTime()+".png";
+  
+$.ajax({
+  type: "POST",
+  url: "script.php",
+  data: { 
+     imgBase64: dataURL,
+     imgName: time
+  }
+}).done(function(o) {
+  
+  
+  console.log('saved'); 
+  // If you want the file to be visible in the browser 
+  // - please modify the callback in javascript. All you
+  // need is to return the url to the file, you just saved 
+  // and than put the image in your browser.
+});
+
+  });
+  
+})();
+    function processImage() {		
+		
         // Replace <Subscription Key> with your valid subscription key.
         var subscriptionKey = "04602a602bb543738e53391b304c1381";
 
@@ -46,7 +90,8 @@
         };
 
         // Display the image.
-        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + <?php if(empty($_POST["imgName"])) {echo "";} else { echo $name;} ?>;
+		console.log(time);
+        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + time;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
