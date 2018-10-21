@@ -10,7 +10,7 @@
   	<p>1.17</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
-   <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
+   <a href="#" id="capture" class="push_button red">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
    <img src="http://goo.gl/qgUfzX" id="photo" alt="Ваша фотография">
   </div>
@@ -135,7 +135,7 @@ $.ajax({
         
 
         <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:740px;"></textarea>
+                  style="width:580px; height:640px;"></textarea>
     </div>
 
 
