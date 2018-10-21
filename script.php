@@ -13,7 +13,7 @@ $sourceImageUrl = "https://nasa.medispark.io/"  . $file;
 //echo $sourceImageUrl;
 define( 'API_BASE_URL',     'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect' );
 define( 'API_PRIMARY_KEY',      '04602a602bb543738e53391b304c1381' );
-$img = "https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg";//$sourceImageUrl;
+$img = $sourceImageUrl;
 
 $post_string = '{"url":"' . $img . '"}';
 
@@ -50,15 +50,15 @@ $emotion = $decode[0]["faceAttributes"]["emotion"];
 
 ## Добавление записи в бд
 $host="localhost";
-$user="nasa";
-$pass= "AKN7n82l3N8n6ifC"; //установленный вами пароль
+$user= "root";//"nasa";
+$pass= "";//"AKN7n82l3N8n6ifC"; //установленный вами пароль
 $db_name="nasa";
 
-$link=mysql_connect($host,$user,$pass);
-mysql_select_db($db_name,$link);
+$link=mysqli_connect($host,$user,$pass, $db_name);
 
 $nameAstr = $_POST['astrName'];
 $time = substr($name, 0, strpos($name, '.'));
+echo $nameAstr;
 
 //Вставляем данные, подставляя их в запрос
 $sql = mysql_query("INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')");
