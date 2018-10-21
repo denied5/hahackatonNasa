@@ -48,7 +48,6 @@ $decode = json_decode($response, true);
 $emotion = $decode[0]["faceAttributes"]["emotion"];
 
 foreach ($emotion as $key => $value) {
-    echo <tr><td>$key</td><td>$value</td></tr>;
-
-
+    echo "<tr><td>$key</td><td>$value</td></tr>";
+}
 
