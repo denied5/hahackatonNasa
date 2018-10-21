@@ -50,8 +50,8 @@ $emotion = $decode[0]["faceAttributes"]["emotion"];
 
 ## Добавление записи в бд
 $host="localhost";
-$user= "root";//"nasa";
-$pass= "";//"AKN7n82l3N8n6ifC"; //установленный вами пароль
+$user= "nasa";
+$pass= "AKN7n82l3N8n6ifC"; //установленный вами пароль
 $db_name="nasa";
 
 $link=mysqli_connect($host,$user,$pass, $db_name);
