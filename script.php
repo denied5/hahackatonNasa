@@ -46,29 +46,6 @@ curl_close( $ch );
 
 $decode = json_decode($response, true);
 var_dump($decode[0]["faceAttributes"]["emotion"]);
-$emotion = $decode[0]["faceAttributes"]["emotion"]; 
 
-## Добавление записи в бд
-/*$host="localhost";
-$user= "nasa";
-$pass= "AKN7n82l3N8n6ifC"; //установленный вами пароль
-$db_name="nasa";
-
-$link=mysqli_connect($host,$user,$pass, $db_name);
-
-$nameAstr = $_POST['astrName'];
-$time = substr($name, 0, strpos($name, '.'));
-echo $nameAstr;
-
-//Вставляем данные, подставляя их в запрос
-$query = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')"
-$sql = mysqli_query($query);
-//Если вставка прошла успешно
-if ($sql) {
-    echo "<p>Work.</p>";
-} else {
-    echo "<p>Not work.</p>";
-	printf("Errormessage: %s\n", $mysqli->error);*/
-}
 
 
