@@ -67,6 +67,7 @@ if ($sql) {
     echo "<p>Work.</p>";
 } else {
     echo "<p>Not work.</p>";
+	printf("Errormessage: %s\n", $mysqli->error);
 }
 
 
