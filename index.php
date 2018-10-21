@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth">
-  	<p>1.12</p>
+  	<p>1.13</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
@@ -53,7 +53,7 @@ $.ajax({
   }
 }).done(function(o) {
   
-  
+  console.log(o);
   console.log('saved'); 
   // If you want the file to be visible in the browser 
   // - please modify the callback in javascript. All you
@@ -90,7 +90,7 @@ $.ajax({
 
         // Display the image.
 		console.log(time);
-        var sourceImageUrl = "https://nasa.medispark.io/uploads/" + time;
+        var sourceImageUrl = o;
         document.querySelector("#sourceImage").src = sourceImageUrl;
 
         // Perform the REST API call.
