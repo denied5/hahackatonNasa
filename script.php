@@ -8,7 +8,6 @@ $data = base64_decode($img);
 $file = $upload_dir.$name;
 
 $success = file_put_contents($file, $data);
-echo $_POST['astrName'];
 $sourceImageUrl = "https://nasa.medispark.io/"  . $file;
 
 //echo $sourceImageUrl;
