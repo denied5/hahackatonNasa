@@ -45,7 +45,10 @@ $ch = curl_init();
 curl_close( $ch );
 
 $decode = json_decode($response, true);
-var_dump($decode[0]["faceAttributes"]["emotion"]);
+$emotion = $decode[0]["faceAttributes"]["emotion"];
+
+foreach ($emotion as $key => $value) {
+    echo <tr><td>$key</td><td>$value</td></tr>;
 
 
 
