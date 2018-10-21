@@ -14,7 +14,7 @@ $sourceImageUrl = "https://nasa.medispark.io/"  . $file;
 //echo $sourceImageUrl;
 define( 'API_BASE_URL',     'https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect' );
 define( 'API_PRIMARY_KEY',      '04602a602bb543738e53391b304c1381' );
-$img = 'https://nasa.medispark.io/uploads/image_name.png';
+$img = $sourceImageUrl;
 
 $post_string = '{"url":"' . $img . '"}';
 
