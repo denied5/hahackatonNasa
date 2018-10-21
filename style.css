@@ -3,18 +3,7 @@
   background: #ccc;
   border: 10px solid #ddd;
   float: left;
-
-}
-
-.output
-{
-
-  
-  width: 600px;
-  background: #ccc;
-  float: left;
-  border: 10px solid #ddd;
-  
+  margin: 2px 10px 2px 2px ;
 }
 
 .booth-capture-button {
@@ -23,7 +12,7 @@
   padding: 10px 20px;
   background: cornflowerblue;
   color: #fff;
-  text-align: left;
+  text-align: center;
   text-decoration: none;
 }
 
