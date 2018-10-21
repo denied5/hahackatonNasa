@@ -7,8 +7,16 @@
 </head>
 <body>
   <div class="booth" >
-  	<p>1.19</p>
   	
+  	<form name="myForm">
+      <p style="display: inline-block;">1.20</p>
+      <input type="radio" name="astrName" checked="checked" value="Armstrong" /><span>Armstrong</span>
+      <input type="radio" name="astrName" value="Luis" /><span>Luis</span>
+      <input type="radio" name="astrName" value="Jhon" /><span>Jhon</span>
+       <input type="radio" name="astrName" value="Bob" /><span>Bob</span>
+    </form>
+    <div id="printBlock"></div>
+
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="push_button red">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
@@ -17,6 +25,13 @@
   <script src="photo.js"></script>
 
 <script type="text/javascript">
+  var AstronautName = "Armstrong";
+function onclick(e){
+    AstronautName = e.target.value;
+}
+for (var i = 0; i < myForm.astrName.length; i++) {
+    myForm.astrName[i].addEventListener("click", onclick);
+}
 	var time = "";
 	(function() {
   var video = document.getElementById('video'),
@@ -49,8 +64,8 @@ $.ajax({
   url: "script.php",
   data: { 
      imgBase64: dataURL,
-     imgName: time
-     astrName: nameAstr;
+     imgName: time,
+     astrName: AstronautName
   }
 }).done(function(o) {
   
