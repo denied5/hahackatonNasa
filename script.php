@@ -62,7 +62,7 @@ echo $nameAstr;
 
 //Вставляем данные, подставляя их в запрос
 $query = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')"
-$sql = mysqli_query(query);
+$sql = mysqli_query($query);
 //Если вставка прошла успешно
 if ($sql) {
     echo "<p>Work.</p>";
