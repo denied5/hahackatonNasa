@@ -5,9 +5,9 @@
 	<link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 </head>
-<body>
-  <div class="booth">
-  	<p>1.15</p>
+<body >
+  <div class="booth" >
+  	<p>1.16</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="booth-capture-button">Сфотографировать</a>
@@ -128,20 +128,16 @@ $.ajax({
 })();
 </script>
 
-<h1>Detect Faces:</h1>
 
-<div id="wrapper" style="width:1020px; display:table;">
+
+<div id="wrapper" class="output">
+  <h1 style="margin-left: 10px;">Result:</h1>
     <div id="jsonOutput" style="width:600px; display:table-cell;">
-        Response:<br><br>
 
         <textarea id="responseTextArea" class="UIInput"
-                  style="width:580px; height:400px;"></textarea>
+                  style="margin: 5px 5px; width:580px; height:715px;"></textarea>
     </div>
-    <div id="imageDiv" style="width:420px; display:table-cell;">
-        Source image:<br><br>
-
-        <img id="sourceImage" width="400" />
-    </div>
+   
 </div>
 </body>
 </html>
