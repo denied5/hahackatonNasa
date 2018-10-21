@@ -65,8 +65,6 @@ var_dump($decode[0]["faceAttributes"]["emotion"]);
 
 
 
-
-
 exit;
 $sourceImageUrl = "https://nasa.medispark.io/uploads/image_name.png";
 $params = [
