@@ -49,7 +49,7 @@ var_dump($decode[0]["faceAttributes"]["emotion"]);
 $emotion = $decode[0]["faceAttributes"]["emotion"]; 
 
 ## Добавление записи в бд
-$host="localhost";
+/*$host="localhost";
 $user= "nasa";
 $pass= "AKN7n82l3N8n6ifC"; //установленный вами пароль
 $db_name="nasa";
@@ -68,7 +68,7 @@ if ($sql) {
     echo "<p>Work.</p>";
 } else {
     echo "<p>Not work.</p>";
-	printf("Errormessage: %s\n", $mysqli->error);
+	printf("Errormessage: %s\n", $mysqli->error);*/
 }
 
 
