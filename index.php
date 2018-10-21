@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="booth" >
-  	<p>1.17</p>
+  	<p>1.18</p>
   	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="push_button red">Сфотографировать</a>
@@ -54,6 +54,8 @@ $.ajax({
 }).done(function(o) {
   
   console.log(o);
+ 
+  $("#responseTextArea").val(o);
   console.log('saved'); 
 });
 
