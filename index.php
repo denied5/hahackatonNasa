@@ -7,26 +7,8 @@
 </head>
 <body>
   <div class="booth" >
-  	<p>1.18</p>
-  	<form name="myForm">
-      <input type="radio" name="astrName" checked="checked" value="Armstrong" /><span>Armstrong</span>
-      <input type="radio" name="astrName" value="Luis" /><span>Luis</span>
-      <input type="radio" name="astrName" value="Jhon" /><span>Jhon</span>
-       <input type="radio" name="astrName" value="Bob" /><span>Bob</span>
-    </form>
-    <div id="printBlock"></div>
-<script>
-
-function onclick(e){
- 
-   
-    var nameAstr = e.target.value;
-    
-}
-for (var i = 0; i < myForm.astrName.length; i++) {
-    myForm.astrName[i].addEventListener("click", onclick);
-}
-</script>
+  	<p>1.19</p>
+  	
    <video id="video" width="400" height="300" autoplay></video>
    <a href="#" id="capture" class="push_button red">Сфотографировать</a>
    <canvas id="canvas" width="400" height="300"></canvas>
@@ -35,7 +17,6 @@ for (var i = 0; i < myForm.astrName.length; i++) {
   <script src="photo.js"></script>
 
 <script type="text/javascript">
-  
 	var time = "";
 	(function() {
   var video = document.getElementById('video'),
