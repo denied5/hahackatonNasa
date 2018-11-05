@@ -94,7 +94,7 @@
 
     $nameAstr = $_POST['astrName'];
     //$nameAstr = "Armstrong"
-    $time = substr($name, 0, strpos($name, '.'));*/
+    $time = substr($name, 0, strpos($name, '.'));
     
     //Вставляем данные, подставляя их в запрос
    /* $sql = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')";*/
