@@ -77,8 +77,8 @@
     /*Запись в БД*/
     $servername = "138.201.105.20:306";
     $database = "nasa";
-    $username = "nasa" //"root";
-    $password = "AKN7n82l3N8n6ifC" //"";
+    $username = "nasa"; //"root";
+    $password = "AKN7n82l3N8n6ifC"; //"";
 
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
