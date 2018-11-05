@@ -75,7 +75,7 @@
     $emotion = $decode[0]["faceAttributes"]["emotion"];
     
     /*Запись в БД*/
-    $servername = "localhost";
+    $servername = "138.201.105.20:306";
     $database = "nasa";
     $username = "nasa"//"root";
     $password = "AKN7n82l3N8n6ifC"//"";
@@ -88,9 +88,9 @@
         die("Connection failed: " . mysqli_connect_error());
     }
 
-    //$nameAstr = $_POST['astrName'];
-    $nameAstr = "Armstrong"
-   $time = substr($name, 0, strpos($name, '.'));
+    $nameAstr = $_POST['astrName'];
+    //$nameAstr = "Armstrong"
+    $time = substr($name, 0, strpos($name, '.'));
     
     //Вставляем данные, подставляя их в запрос
     $sql = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')";
@@ -101,5 +101,6 @@
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }
+
     mysqli_close($conn);
 
