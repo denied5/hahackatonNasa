@@ -75,13 +75,13 @@
     $emotion = $decode[0]["faceAttributes"]["emotion"];
     
     /*Запись в БД*/
-   /* $servername = "138.201.105.20:306";
+    $servername = "138.201.105.20:306";
     $database = "nasa";
     $username = "nasa" //"root";
     $password = "AKN7n82l3N8n6ifC" //"";
 
     // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $database);*/
+    $conn = mysqli_connect($servername, $username, $password, $database);
     
     // Check connection
     /*if (!$conn) {
@@ -102,5 +102,5 @@
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
     }*/
 
-    mysqli_close($conn);
+    //mysqli_close($conn);
 
