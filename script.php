@@ -77,8 +77,8 @@
     /*Запись в БД*/
     $servername = "138.201.105.20:306";
     $database = "nasa";
-    $username = "nasa"//"root";
-    $password = "AKN7n82l3N8n6ifC"//"";
+    $username = "nasa" //"root";
+    $password = "AKN7n82l3N8n6ifC" //"";
 
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $database);
@@ -93,14 +93,14 @@
     $time = substr($name, 0, strpos($name, '.'));
     
     //Вставляем данные, подставляя их в запрос
-    $sql = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')";
+   /* $sql = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".$nameAstr."','".$time."', '".$emotion["anger"]."', '".$emotion["contempt"]."', '".$emotion["disgust"]."', '".$emotion["fear"]."', '".$emotion["happiness"]."', '".$emotion["neutral"]."', '".$emotion["sadness"]."', '".$emotion["surprise"]."')";
     
     //Если вставка прошла успешно
     if (mysqli_query($conn, $sql)) {
         echo "New record created successfully";
     } else {
         echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+    }*/
 
     mysqli_close($conn);
 
