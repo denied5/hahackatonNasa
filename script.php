@@ -25,7 +25,7 @@
     //$sourceImageUrl = "https://ak4.picdn.net/shutterstock/videos/2173574/thumb/1.jpg";
 
     // Формируем curl запрос
-    define( 'API_BASE_URL', 'https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect' );
+    /*define( 'API_BASE_URL', 'https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect' );
     define( 'API_PRIMARY_KEY', '3f7748279b184bb096349044a959737c' );
     
     $post_string = '{"url":"' . $sourceImageUrl . '"}';
@@ -59,12 +59,12 @@
     // Получаем ответ
     $response = curl_exec( $ch );
 
-    echo $response;
+    echo $response;*/
     
-    /*$response = ' [{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';*/
+    $response = ' [{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';
 
     
-    curl_close( $ch );
+    //curl_close( $ch );
 
     // Обработка ответа
     $decode = json_decode($response, true);
@@ -79,7 +79,7 @@
     $emotion = $decode[0]["faceAttributes"]["emotion"];
     
     /*Запись в БД*/
-    $servername = "138.201.105.20:306";
+    $servername = "localhost";
     $database = "nasa";
     $username = "nasa"; //"root";
     $password = "AKN7n82l3N8n6ifC"; //"";
@@ -91,6 +91,8 @@
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
     }
+
+    echo "good connection";
 
     $nameAstr = $_POST['astrName'];
     //$nameAstr = "Armstrong"
