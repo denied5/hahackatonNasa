@@ -1,70 +1,46 @@
-<?php   
-    // Директория для загрузки фотогрфий
-    $upload_dir = 'uploads/';  
+<?php
+    /**
+     * script.php
+     *
+     * PSY-CyberGame Startup
+     *
+     * Вызывается с index.php получая фотографию и имя астронавта для обработки и 
+     * записи полученных результатов в базу данных.    
+     */
 
-    // Фотография с веб-камеры
+    require_once("includes/functions.php");
+    require_once("includes/constants.php"); 
+
+    // Фотография с веб-камеры закодированная в base64
     $img = $_POST['imgBase64'];
 
     // Имя фотографии
-    $name = $_POST['imgName'];
+    $imgName = $_POST['imgName'];
+
+    // Имя астронавта
+    $astrName = $_POST['astrName'];
 
     // Сохраняем фотографию на сервер
-    $img = str_replace('data:image/png;base64,', '', $img);
-    $img = str_replace(' ', '+', $img);
-    $data = base64_decode($img);
-    $file = $upload_dir.$name;
-    $success = file_put_contents($file, $data);
-    //TODO: обработать ошибку записи на сервер
+    save_base64_image($img, $imgName);
 
-    /*Отправка фотографии microsoft для обработки*/
+    // Получаем время (Имя изображения включает в себя время сохранения) 
+    $time = substr($imgName, 0, strpos($imgName, '.'));
 
     // Ссылка на изображение
     $sourceImageUrl = "https://nasa.medispark.io/"  . $file;
-
-    // Формируем curl запрос
-    define( 'API_BASE_URL', 'https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect' );
-    define( 'API_PRIMARY_KEY', '3f7748279b184bb096349044a959737c' );
+   
+    // Получаем ответ с microsoft face recognition
+    $response = microsoft_face_recognition($sourceImageUrl);
     
-    $post_string = '{"url":"' . $sourceImageUrl . '"}';
-    
-    $query_params = array(
-        'returnFaceId' => 'true',
-        'returnFaceLandmarks' => 'false',
-        'returnFaceAttributes' => 'emotion'
-    );
-    
-    $params = '';
-    
-    foreach( $query_params as $key => $value ) {
-        $params .= $key . '=' . $value . '&';
-    }
-    
-    $params .= 'subscription-key=' . API_PRIMARY_KEY;
-
-    $post_url = API_BASE_URL . "?" . $params;
-
-    $ch = curl_init();
-    curl_setopt( $ch, CURLOPT_HTTPHEADER, array(                                                                          
-            'Content-Type: application/json',                                                                                
-            'Content-Length: ' . strlen($post_string))
-    );    
-    curl_setopt( $ch, CURLOPT_URL, $post_url );
-    curl_setopt( $ch, CURLOPT_POST, true );
-    curl_setopt( $ch, CURLOPT_POSTFIELDS, $post_string );
-    curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
-    
-    // Получаем ответ
-    $response = curl_exec( $ch );
-
-    echo $response;
-    
-    /*$response = ' [{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';*/
-
-    
-    curl_close( $ch );
+    /*$response = '[{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';*/
 
     // Обработка ответа
     $decode = json_decode($response, true);
+
+    // Костыль, потому что где-то выводяться 4 пробела
+    echo "\n";
+    
+    // Вывод результатов
     foreach ($decode as $number => $people){ 
         $emotion = $people["faceAttributes"]["emotion"];
         foreach ($emotion as $key => $value) {
@@ -74,41 +50,7 @@
     } 
 
     $emotion = $decode[0]["faceAttributes"]["emotion"];
-    
-    /*Запись в БД*/
-    $servername = "localhost";
-    $database = "nasa";
-    $username = "nasa"; //"root";
-    $password = "AKN7n82l3N8n6ifC"; //"";
 
-    // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $database);
-    
-    // Check connection
-    if (!$conn) {
-        die("Connection failed: " . mysqli_connect_error());
-    }
-
-    //echo "good connection";
-
-    $nameAstr = $_POST['astrName'];
-    //$nameAstr = "Armstrong"
-    $time = substr($name, 0, strpos($name, '.'));
-    
-    //Вставляем данные, подставляя их в запрос
-   /* $sql = "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES ('".  ."')";*/
-
-   if ($stmt = mysqli_prepare($conn, "INSERT INTO `statistics` (`name`, `time`, `anger`, `contempt`, `disgust`, `fear`, `happiness`, `neutral`, `sadness`, `surprise`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")) {
-
-        /* связываем параметры с метками */
-        mysqli_stmt_bind_param($stmt, "ssssssssss", $nameAstr ,$time, $emotion["anger"] ,$emotion["contempt"], $emotion["disgust"], $emotion["fear"], $emotion["happiness"], $emotion["neutral"], $emotion["sadness"], $emotion["surprise"]);
-
-        /* запускаем запрос */
-        mysqli_stmt_execute($stmt);
-
-        /* закрываем запрос */
-        mysqli_stmt_close($stmt);
-    }
-
-    mysqli_close($conn);
-
+    // Запись в БД
+    record_to_database($astrName, $time, $emotion);
+?>

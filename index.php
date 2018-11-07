@@ -11,7 +11,7 @@
     <div class="booth">
 
         <form name="myForm">
-            <p style="display: inline-block;">1.47  </p>
+            <p style="display: inline-block;">1.48  </p>
             <input type="radio" name="astrName" checked="checked" value="Armstrong" /><span>Armstrong</span>
             <input type="radio" name="astrName" value="Luis" /><span>Luis</span>
             <input type="radio" name="astrName" value="Jhon" /><span>Jhon</span>
@@ -23,65 +23,9 @@
         <a href="#" id="capture" class="push_button red">Сфотографировать</a>
         <canvas id="canvas" width="400" height="300"></canvas>
         <img src="http://goo.gl/qgUfzX" id="photo" alt="Ваша фотография">
-    </div>
+    </div>  
 
-    <script type="text/javascript">
-        var AstronautName = "Armstrong";
-
-        function onclick(e) {
-            AstronautName = e.target.value;
-        }
-        for (var i = 0; i < myForm.astrName.length; i++) {
-            myForm.astrName[i].addEventListener("click", onclick);
-        }
-        var time = "";
-        (function() {
-            var video = document.getElementById('video'),
-                canvas = document.getElementById('canvas'),
-                context = canvas.getContext('2d'),
-                photo = document.getElementById('photo'),
-                vendorUrl = window.URL || window.webkitURL;
-            navigator.getMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.
-            mozGetUserMedia || navigator.msGetUserMedia;
-            navigator.getMedia({
-                video: true,
-                audio: false
-            }, function(stream) {
-                video.src = vendorUrl.createObjectURL(stream);
-                video.play();
-            }, function(error) {
-                alert('Ошибка! Что-то пошло не так, попробуйте позже.');
-                console.log("The following error occurred: " + error.name);
-
-            });
-            document.getElementById('capture').addEventListener('click', function() {
-                context.drawImage(video, 0, 0, 400, 300);
-                photo.setAttribute('src', canvas.toDataURL('image/png'));
-                var dataURL = canvas.toDataURL();
-                var d = new Date();
-
-                time = d.getTime() + ".png";
-
-                $.ajax({
-                    type: "POST",
-                    url: "script.php",
-                    data: {
-                        imgBase64: dataURL,
-                        imgName: time,
-                        astrName: AstronautName
-                    }
-                }).done(function(o) {
-
-                    console.log(o);
-
-                    $("#responseTextArea").val(o);
-                    console.log('saved');
-                });
-
-            });
-
-        })();
-    </script>
+    <script type="text/javascript" src="js/webcam.js"> </script>
 
     <h1>Detect Faces:</h1>
 
