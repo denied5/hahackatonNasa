@@ -21,7 +21,7 @@
     $astrName = $_POST['astrName'];
 
     // Сохраняем фотографию на сервер
-    save_base64_image($img, $imgName);
+    $file = save_base64_image($img, $imgName);
 
     // Получаем время (Имя изображения включает в себя время сохранения) 
     $time = substr($imgName, 0, strpos($imgName, '.'));

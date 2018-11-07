@@ -17,10 +17,10 @@
     define("DATABASE", "nasa");
 
     // Database's username
-    define("USERNAME", "root"); //"nasa");
+    define("USERNAME", "nasa");
 
     // Database's password
-    define("PASSWORD", "");//"AKN7n82l3N8n6ifC");
+    define("PASSWORD", "AKN7n82l3N8n6ifC");
 
     // Microsoft face recognition API url for west Europe
     define("API_BASE_URL", "https://westeurope.api.cognitive.microsoft.com/face/v1.0/detect");
