@@ -48,9 +48,12 @@
         }
         echo "\n";
     } 
+    if ($decode) {
+         $emotion = $decode[0]["faceAttributes"]["emotion"];
+         //Запись в БД
+        record_to_database($astrName, $time, $emotion);
+    }
+   
 
-    $emotion = $decode[0]["faceAttributes"]["emotion"];
-
-    // Запись в БД
-    record_to_database($astrName, $time, $emotion);
+    
 ?>
