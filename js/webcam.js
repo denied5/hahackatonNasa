@@ -31,7 +31,7 @@ var time = "";
 
     });
     
-    document.getElementById('capture').addEventListener('click', function () {
+    function getCapture () {
         context.drawImage(video, 0, 0, 400, 300);
         photo.setAttribute('src', canvas.toDataURL('image/png'));
         var dataURL = canvas.toDataURL();
@@ -54,5 +54,23 @@ var time = "";
             $("#responseTextArea").val(o);
             console.log('saved');
         });
-    });
+    }
+
+    document.getElementById('capture').addEventListener('click', getCapture);
+
+    var timerId = false; 
+
+    function recordStart () {
+        timerId = setInterval(getCapture, 1800000);
+        console.log("startRecord");
+    }
+
+    function recordStop () {
+        clearInterval(timerId);
+        console.log("stopRecord");
+    }
+
+    document.getElementById('startRecord').addEventListener('click', recordStart);
+    document.getElementById('stopRecord').addEventListener('click', recordStop);
+
 })();
