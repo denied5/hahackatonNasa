@@ -10,7 +10,7 @@
 <body>
     <div class="booth">
         <form name="myForm">
-            <p style="display: inline-block;">1.50  </p>
+            <p style="display: inline-block;">1.51  </p>
             <input type="radio" name="astrName" checked="checked" value="Armstrong" /><span>Armstrong</span>
             <input type="radio" name="astrName" value="Luis" /><span>Luis</span>
             <input type="radio" name="astrName" value="John" /><span>Jhon</span>

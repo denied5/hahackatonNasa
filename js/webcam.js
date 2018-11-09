@@ -11,6 +11,8 @@ for (var i = 0; i < myForm.astrName.length; i++) {
 var time = "";
 
 (function () {
+    var timerId;
+    var flag = false; 
     var video = document.getElementById('video'),
         canvas = document.getElementById('canvas'),
         context = canvas.getContext('2d'),
@@ -31,7 +33,7 @@ var time = "";
 
     });
     
-    function getCapture () {
+    function getCapture () {    
         context.drawImage(video, 0, 0, 400, 300);
         photo.setAttribute('src', canvas.toDataURL('image/png'));
         var dataURL = canvas.toDataURL();
@@ -58,16 +60,27 @@ var time = "";
 
     document.getElementById('capture').addEventListener('click', getCapture);
 
-    var timerId = false; 
-
     function recordStart () {
-        timerId = setInterval(getCapture, 1800000);
-        console.log("startRecord");
+        if(flag === false){
+            getCapture();
+            timerId = setInterval(getCapture, 10000);
+            console.log("startRecord");
+            flag = true;
+        }
+        else {
+            console.log("Already record");
+        }
     }
 
     function recordStop () {
-        clearInterval(timerId);
-        console.log("stopRecord");
+        if(flag){
+            flag = false;
+            clearInterval(timerId);
+            console.log("stopRecord");
+        }
+        else{
+            console.log("no recording");
+        }
     }
 
     document.getElementById('startRecord').addEventListener('click', recordStart);
