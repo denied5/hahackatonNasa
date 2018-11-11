@@ -40,18 +40,22 @@
     // Костыль, потому что где-то выводяться 4 пробела
     echo "\n";
     
-    // Вывод результатов
-    foreach ($decode as $number => $people){ 
-        $emotion = $people["faceAttributes"]["emotion"];
-        foreach ($emotion as $key => $value) {
-            echo "$key = $value \n";
-        }
-        echo "\n";
-    } 
     if ($decode) {
-         $emotion = $decode[0]["faceAttributes"]["emotion"];
-         //Запись в БД
+        // Вывод результатов
+        foreach ($decode as $number => $people){ 
+            $emotion = $people["faceAttributes"]["emotion"];
+            foreach ($emotion as $key => $value) {
+                echo "$key = $value \n";
+            }
+            echo "\n";
+        } 
+        
+        $emotion = $decode[0]["faceAttributes"]["emotion"];
+        
+        //Запись в БД
         record_to_database($astrName, $time, $emotion);
+    } else {
+        echo "Face not detected.\n";
     }
    
 

@@ -10,15 +10,13 @@
 <body>
     <div class="booth">
         <form name="myForm">
-            <p style="display: inline-block;">1.51  </p>
+            <p style="display: inline-block;">1.52  </p>
             <input type="radio" name="astrName" checked="checked" value="Armstrong" /><span>Armstrong</span>
             <input type="radio" name="astrName" value="Luis" /><span>Luis</span>
             <input type="radio" name="astrName" value="John" /><span>Jhon</span>
             <input type="radio" name="astrName" value="Bob" /><span>Bob</span>
         </form>
-        
         <div id="printBlock"></div>
-
         <video id="video" width="400" height="300" autoplay></video>
         <a href="#" id="capture" class="push_button red">Сфотографировать</a>
         <a href="#" id="startRecord" class="push_button red">Начать запись</a>

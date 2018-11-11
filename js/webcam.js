@@ -11,6 +11,8 @@ for (var i = 0; i < myForm.astrName.length; i++) {
 var time = "";
 
 (function () {
+    var divRecord = document.createElement('div');
+    divRecord.innerHTML = "recording";
     var timerId;
     var flag = false; 
     var video = document.getElementById('video'),
@@ -63,9 +65,10 @@ var time = "";
     function recordStart () {
         if(flag === false){
             getCapture();
-            timerId = setInterval(getCapture, 10000);
+            timerId = setInterval(getCapture, 1800000);
             console.log("startRecord");
             flag = true;
+            document.getElementById('printBlock').appendChild(divRecord);
         }
         else {
             console.log("Already record");
@@ -77,6 +80,7 @@ var time = "";
             flag = false;
             clearInterval(timerId);
             console.log("stopRecord");
+            document.getElementById('printBlock').removeChild(divRecord);
         }
         else{
             console.log("no recording");
