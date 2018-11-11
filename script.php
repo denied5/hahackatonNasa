@@ -30,9 +30,9 @@
     $sourceImageUrl = "https://nasa.medispark.io/"  . $file;
    
     // Получаем ответ с microsoft face recognition
-    //$response = microsoft_face_recognition($sourceImageUrl);
+    $response = microsoft_face_recognition($sourceImageUrl);
     
-    $response = '[{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';
+    //$response = '[{"faceId":"46e48f46-60fc-4b87-9add-aecd9d684351","faceRectangle":{"top":117,"left":485,"width":93,"height":93},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":1.0,"neutral":0.0,"sadness":0.0,"surprise":0.0}}},{"faceId":"4b8de7c8-a93d-4fce-9dde-629067501c90","faceRectangle":{"top":120,"left":217,"width":84,"height":84},"faceAttributes":{"emotion":{"anger":0.0,"contempt":0.0,"disgust":0.0,"fear":0.0,"happiness":0.375,"neutral":0.624,"sadness":0.0,"surprise":0.0}}}]';
 
     // Обработка ответа
     $decode = json_decode($response, true);
