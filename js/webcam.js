@@ -65,7 +65,7 @@ var time = "";
     function recordStart () {
         if(flag === false){
             getCapture();
-            timerId = setInterval(getCapture, 1800000);
+            timerId = setInterval(getCapture, 30000);
             console.log("startRecord");
             flag = true;
             document.getElementById('printBlock').appendChild(divRecord);
